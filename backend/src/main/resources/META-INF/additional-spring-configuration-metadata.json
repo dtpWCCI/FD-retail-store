@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "server",
+    "type": "java.lang.String",
+    "description": "A description for 'server'"
+  },
+  {
+    "name": "port",
+    "type": "java.lang.String",
+    "description": "A description for 'port'"
+  },
+  {
+    "name": "thymeleaf",
+    "type": "java.lang.String",
+    "description": "A description for 'thymeleaf'"
+  },
+  {
+    "name": "spring",
+    "type": "java.lang.String",
+    "description": "A description for 'spring'"
+  }
+]}

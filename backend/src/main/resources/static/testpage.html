@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router Test Page</title>
+</head>
+<body>
+    <h1 style="color: red;">Router Test Page</h1>
+    
+    <div id="route-links">
+        <button onclick="window.location.href='/home'">Home</button>
+        <button onclick="window.location.href='/about'">About</button>
+        <button onclick="window.location.href='/contact'">Contact</button>
+        <button onclick="window.location.href='/products'">Products</button>
+        <button onclick="window.location.href='/services'">Services</button>
+    </div>
+
+    <script>
+        // Optional: Add JavaScript to dynamically generate links based on your routing setup
+        const routes = [
+            { label: 'Home', href: '/index' },
+            { label: 'About', href: '/about' },
+            { label: 'Contact', href: '/contact' },
+            { label: 'Products', href: '/products' },
+            { label: 'Services', href: '/services' }
+        ];
+
+        const linkContainer = document.getElementById('route-links');
+        routes.forEach(route => {
+            const button = document.createElement('button');
+            button.textContent = route.label;
+            button.onclick = () => window.location.href = route.href;
+            linkContainer.appendChild(button);
+        });
+    </script>
+</body>
+</html>

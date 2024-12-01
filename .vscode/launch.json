@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Example",
+            "request": "launch",
+            "mainClass": "com.fantasydrawer.ecommerce.Example",
+            "projectName": "ecommerce-backend"
+        },
+        {
+            "type": "java",
+            "name": "FantasyDrawerApplication",
+            "request": "launch",
+            "mainClass": "com.fantasydrawer.ecommerce.backend.FantasyDrawerApplication",
+            "projectName": "ecommerce-backend"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-FantasyDrawerApplication<fantasy-drawer-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fantasydrawer.ecommerce.backend.FantasyDrawerApplication",
+            "projectName": "fantasy-drawer-backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
