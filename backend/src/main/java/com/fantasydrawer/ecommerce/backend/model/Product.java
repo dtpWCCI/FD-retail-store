@@ -1,63 +1,47 @@
 package com.fantasydrawer.ecommerce.backend.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Version;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.*;
+
 @Entity
 @Table(name = "product")
-@Getter(onMethod_ = {})
-@Setter(onMethod_ = {})
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Title is required")
-    @Column(nullable = false)
+    @NotBlank(message = "Title must not be blank")
     private String title;
 
-    @NotNull(message = "Price is required")
-    @Column(nullable = false)
-    private BigDecimal price;
-
+    @NotBlank(message = "Description must not be blank")
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
 
-    private String category;
+    @NotNull(message = "Price must not be null")
+    private BigDecimal price;
 
+    @Column(name = "image_url")
     private String imageUrl;
 
+    @NotBlank(message = "Category must not be blank")
+    private String category;
+
+    @NotNull(message = "Rating must not be null")
     private BigDecimal rating;
 
-    public Product() {
-        // Default constructor for JPA
-    }
-
-    public Product(Long id, String title, String description, BigDecimal price, String category, String imageUrl, BigDecimal rating) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.imageUrl = imageUrl;
-        this.rating = rating;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = LocalDateTime.now();
-        this.version = 0L;
-    }
+    @Column(name = "review_count")
+    private int reviewCount;
 
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -67,4 +51,58 @@ public class Product {
 
     @Version
     private Long version;
+
+    // Custom constructor
+    public Product(@NonNull String title, @NonNull String description,
+                @NonNull BigDecimal price, double d, @NonNull String category,
+                @NonNull BigDecimal rating, int reviewCount) {
+        if (title == null || description == null || category == null || rating == null) {
+            throw new IllegalArgumentException("None of the fields can be null.");
+        }
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.rating = rating;
+        this.reviewCount = reviewCount; // Setting review count
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.version = 0L;
+    }
+
+    public void setName(String string) {
+        this.title = string;
+    }
+
+    public void setPrice(double doubleValue) {
+        this.price = BigDecimal.valueOf(doubleValue);
+    }
+
+    public void setImage(String string) {
+        this.imageUrl = string;
+    }
+
+    public void setRating(BigDecimal doubleValue) {
+        this.rating = doubleValue;
+    }
+
+    public void setReviewCount(int intValue) {
+        this.reviewCount = intValue;
+    }
+
+    public String getName() {
+        return this.title;
+    }
+
+    public void setPrice(BigDecimal price2) {
+        this.price = price2;
+    }
+
+    public String getImage() {
+        return this.imageUrl;
+    }
+
+    public int getReviewCount() {
+        return this.reviewCount; // Return the actual review count
+    }
 }

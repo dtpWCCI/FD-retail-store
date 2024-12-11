@@ -1,9 +1,10 @@
 package com.fantasydrawer.ecommerce.backend.loader;
 
-import com.fantasydrawer.ecommerce.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.fantasydrawer.ecommerce.backend.service.ProductService;
 
 @Component
 public class ProductDataLoader implements CommandLineRunner {

@@ -12,20 +12,15 @@
 
 -- Product Table
 CREATE TABLE IF NOT EXISTS product (
-    id BIGINT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
+     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
     description TEXT,
-    category VARCHAR(100),
-    image_url VARCHAR(255),
-    rating DECIMAL(3, 2),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    price DECIMAL(10,2),
+    category VARCHAR(255),
+    image VARCHAR(255),
+    rating DECIMAL(3,2),
+    review_count INT
 );
-
-
-
-
 -- Discount Table
 CREATE TABLE IF NOT EXISTS Discount (
     discount_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,11 +30,11 @@ CREATE TABLE IF NOT EXISTS Discount (
     valid_from DATE NOT NULL,
     valid_to DATE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    INDEX idx_valid_from_valid_to (valid_from, valid_to)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
-Copy
 
+CREATE INDEX idx_valid_from_valid_to ON Discount(valid_from, valid_to);
+);
 
 -- User Table
 CREATE TABLE IF NOT EXISTS users (
@@ -116,15 +111,3 @@ CREATE TABLE IF NOT EXISTS PaymentDetails (
     INDEX idx_payment_date (payment_date)
 );
 
--- User Table
-CREATE TABLE IF NOT EXISTS users (
-    user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(100) NOT NULL,  -- Ensure this column exists
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    address TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    INDEX idx_email (email)
-);
