@@ -4,8 +4,8 @@ spring:
 
   datasource:
     url: jdbc:mysql://localhost:3306/ecommerce_db?useSSL=false&serverTimezone=UTC
-    username: darri
-    password: workusob
+    username: disco
+    password: Dee
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connection-test-query: SELECT 1
@@ -21,8 +21,8 @@ spring:
     spring.flyway.repair-mode: true
     table: flyway_schema_history
     url: jdbc:mysql://localhost:3306/ecommerce_db?useSSL=false&serverTimezone=UTC    
-    user: darri
-    password: workusob
+    user: disco
+    password: Dee
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -39,3 +39,5 @@ logging:
     "[org.hibernate.type.descriptor.sql.BasicBinder]": TRACE
     "[org.hibernate.SQL]": DEBUG
     "[org.hibernate.type.descriptor.sql.LogicalConnection]": DEBUG
+
+
