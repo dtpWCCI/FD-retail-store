@@ -36,6 +36,9 @@ public class Product {
 
     @NotBlank(message = "Category must not be blank")
     private String category;
+    
+    @NotBlank(message = "Brand must not be blank")
+    private String brand;
 
     @NotNull(message = "Rating must not be null")
     private BigDecimal rating;
@@ -55,14 +58,15 @@ public class Product {
     // Custom constructor
     public Product(@NonNull String title, @NonNull String description,
                 @NonNull BigDecimal price, double d, @NonNull String category,
-                @NonNull BigDecimal rating, int reviewCount) {
-        if (title == null || description == null || category == null || rating == null) {
+                @NonNull String brand, @NonNull BigDecimal rating, int reviewCount) {
+        if (title == null || description == null || category == null || brand == null || rating == null) {
             throw new IllegalArgumentException("None of the fields can be null.");
         }
         this.title = title;
         this.description = description;
         this.price = price;
         this.category = category;
+        this.brand = brand; // Assigning brand properly
         this.rating = rating;
         this.reviewCount = reviewCount; // Setting review count
         this.createdAt = LocalDateTime.now();

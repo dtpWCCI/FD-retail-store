@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS product (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2),
+    category VARCHAR(255),
+    image VARCHAR(255),
+    rating DECIMAL(3,2),
+    review_count INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0
+);
+
