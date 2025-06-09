@@ -175,4 +175,10 @@ public class ProductServiceImpl implements ProductService {
         log.warn("Failed to update product: {}", e.getMessage());
         return null;
     }
+
+    @Recover
+    public void recoverFromFetchFailure(ObjectOptimisticLockingFailureException e) {
+    log.error("Fetch and save products failed after retries: {}", e.getMessage());
+    }
+
 }

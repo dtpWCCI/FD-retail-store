@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Server",
+            "request": "launch",
+            "mainClass": "com.stripe.sample.Server",
+            "projectName": "ecommerce-backend"
+        },
+        {
+            "type": "java",
             "name": "Example",
             "request": "launch",
             "mainClass": "com.fantasydrawer.ecommerce.Example",
